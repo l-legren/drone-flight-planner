@@ -4,4 +4,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
+
+  .sr-only {
+    display: none;
+  }
 `

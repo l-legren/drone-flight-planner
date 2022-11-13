@@ -1,12 +1,9 @@
 import { LatLngExpression } from "leaflet";
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-// import { MapTool } from "./PathMarkers/PathMarkers";
-
+import { PathDrawer } from "./PathDrawer/PathDrawer";
 export const MapFrame = () => {
-  const [initialPoint, ] = useState<LatLngExpression>([
-    52.51028, 13.40789,
-  ]);
+  const [initialPoint] = useState<LatLngExpression>([52.51028, 13.40789]);
 
   return (
     <>
@@ -25,7 +22,7 @@ export const MapFrame = () => {
             Welcome to our Berlin office <br /> Enjoy the views.
           </Popup>
         </Marker>
-        {/* <MapTool /> */}
+        <PathDrawer />
       </MapContainer>
     </>
   );
