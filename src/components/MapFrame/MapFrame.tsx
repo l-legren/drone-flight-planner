@@ -4,12 +4,11 @@ import { PathDrawer } from "./PathDrawer/PathDrawer";
 import * as L from 'leaflet'
 
 interface MapFrameProps {
-    addNewRoute: Dispatch<SetStateAction<L.LatLng[]>>
+    addNewFlightPlan: Dispatch<SetStateAction<L.LatLng[][]>>
 }
 
-export const MapFrame = ({addNewRoute}: MapFrameProps) => {
+export const MapFrame = ({addNewFlightPlan}: MapFrameProps) => {
   const [initialPoint] = useState<L.LatLngExpression>([52.51028, 13.40789]);
-//   const [, setContext ] = useState<CanvasRenderingContext2D | null>()
 
   return (
     <>
@@ -28,7 +27,7 @@ export const MapFrame = ({addNewRoute}: MapFrameProps) => {
             Welcome to our Berlin office <br /> Enjoy the views.
           </Popup>
         </Marker>
-        <PathDrawer addNewRoute={addNewRoute} />
+        <PathDrawer addNewFlightPlan={addNewFlightPlan} />
       </MapContainer>
     </>
   );

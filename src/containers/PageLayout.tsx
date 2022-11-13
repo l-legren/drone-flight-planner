@@ -10,7 +10,7 @@ const Body = styled.div`
 const AppWrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  displaY: flex;
+  display: flex;
   flex-direction: column;
 `;
 

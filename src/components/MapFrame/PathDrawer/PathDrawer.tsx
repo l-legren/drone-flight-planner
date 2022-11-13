@@ -1,29 +1,55 @@
 import { LatLng } from "leaflet";
-import React, {useState, Dispatch, SetStateAction} from "react";
+import React, {
+  useState,
+  Dispatch,
+  SetStateAction,
+  useRef,
+  useEffect,
+} from "react";
 import { FeatureGroup } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
+import { useLeafletContext } from "@react-leaflet/core";
 
 interface PathDrawerProps {
-    addNewRoute: Dispatch<SetStateAction<LatLng[]>>
+  addNewFlightPlan: Dispatch<SetStateAction<LatLng[][]>>;
 }
 
-export const PathDrawer = ({addNewRoute}: PathDrawerProps) => {
-  const [ storedRoutes, setStoredRoutes ] = useState<LatLng[]>([])
+export const PathDrawer = ({ addNewFlightPlan }: PathDrawerProps) => {
+  const [storedRoutes, setStoredRoutes] = useState<Array<LatLng[]>>([]);
+  const [actualRoute, setActualRoute] = useState<LatLng[] | undefined>(
+    undefined
+  );
+  const { map } = useLeafletContext();
+  const drawRef = useRef();
 
-  const onEditPath = (e: any) => {
-    console.log("editing", e.layer.editings);
+  const onEditPath = () => {
+    return null;
   };
+
   const onCreate = (e: any) => {
+    drawRef.current = e.layer;
     const newRoute = e.layer.editing.latlngs;
-    setStoredRoutes([...storedRoutes, newRoute])
-    addNewRoute(newRoute)
+    setActualRoute(newRoute);
+
+    // In order to manage the plans from the flight plan sidebar I remove the layer
+    if (drawRef.current) {
+      map.removeLayer(drawRef.current);
+    }
   };
 
-  const onDelete = (e: any) => {
-    console.log("on delete", e);
+  const onDelete = () => {
+    return null;
   };
 
+  useEffect(() => {
+    if (actualRoute) {
+      setStoredRoutes([...storedRoutes, actualRoute]);
+    }
+  }, [actualRoute]);
 
+  useEffect(() => {
+    addNewFlightPlan(storedRoutes);
+  }, [storedRoutes]);
 
   return (
     <FeatureGroup>
