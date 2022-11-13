@@ -1,9 +1,15 @@
-import { LatLngExpression } from "leaflet";
-import React, { useState } from "react";
+import React, { useState, SetStateAction, Dispatch } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { PathDrawer } from "./PathDrawer/PathDrawer";
-export const MapFrame = () => {
-  const [initialPoint] = useState<LatLngExpression>([52.51028, 13.40789]);
+import * as L from 'leaflet'
+
+interface MapFrameProps {
+    addNewRoute: Dispatch<SetStateAction<L.LatLng[]>>
+}
+
+export const MapFrame = ({addNewRoute}: MapFrameProps) => {
+  const [initialPoint] = useState<L.LatLngExpression>([52.51028, 13.40789]);
+//   const [, setContext ] = useState<CanvasRenderingContext2D | null>()
 
   return (
     <>
@@ -22,7 +28,7 @@ export const MapFrame = () => {
             Welcome to our Berlin office <br /> Enjoy the views.
           </Popup>
         </Marker>
-        <PathDrawer />
+        <PathDrawer addNewRoute={addNewRoute} />
       </MapContainer>
     </>
   );

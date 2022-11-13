@@ -1,17 +1,29 @@
-import React from "react";
+import { LatLng } from "leaflet";
+import React, {useState, Dispatch, SetStateAction} from "react";
 import { FeatureGroup } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
-export const PathDrawer = () => {
-  const onEditPath = () => {
-    console.log("editing");
+
+interface PathDrawerProps {
+    addNewRoute: Dispatch<SetStateAction<LatLng[]>>
+}
+
+export const PathDrawer = ({addNewRoute}: PathDrawerProps) => {
+  const [ storedRoutes, setStoredRoutes ] = useState<LatLng[]>([])
+
+  const onEditPath = (e: any) => {
+    console.log("editing", e.layer.editings);
   };
-  const onCreate = () => {
-    console.log("on create");
+  const onCreate = (e: any) => {
+    const newRoute = e.layer.editing.latlngs;
+    setStoredRoutes([...storedRoutes, newRoute])
+    addNewRoute(newRoute)
   };
 
-  const onDelete = () => {
-    console.log("on delete");
+  const onDelete = (e: any) => {
+    console.log("on delete", e);
   };
+
+
 
   return (
     <FeatureGroup>
@@ -23,7 +35,9 @@ export const PathDrawer = () => {
         draw={{
           rectangle: false,
           circle: false,
-          polygon: false
+          polygon: false,
+          marker: false,
+          circlemarker: false,
         }}
       />
     </FeatureGroup>
