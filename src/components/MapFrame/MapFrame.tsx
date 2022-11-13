@@ -1,13 +1,14 @@
 import React, { useState, SetStateAction, Dispatch } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, ZoomControl, Polyline } from "react-leaflet";
 import { PathDrawer } from "./PathDrawer/PathDrawer";
 import * as L from 'leaflet'
 
 interface MapFrameProps {
     addNewFlightPlan: Dispatch<SetStateAction<L.LatLng[][]>>
+    selectedPlan: L.LatLng[] | undefined
 }
 
-export const MapFrame = ({addNewFlightPlan}: MapFrameProps) => {
+export const MapFrame = ({addNewFlightPlan, selectedPlan}: MapFrameProps) => {
   const [initialPoint] = useState<L.LatLngExpression>([52.51028, 13.40789]);
 
   return (
@@ -28,6 +29,8 @@ export const MapFrame = ({addNewFlightPlan}: MapFrameProps) => {
           </Popup>
         </Marker>
         <PathDrawer addNewFlightPlan={addNewFlightPlan} />
+        <ZoomControl position={'bottomleft'} />
+        {selectedPlan && <Polyline positions={selectedPlan} />}
       </MapContainer>
     </>
   );

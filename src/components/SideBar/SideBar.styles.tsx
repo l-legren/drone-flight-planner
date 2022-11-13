@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SideBarContainer = styled.div`
   position: absolute;
-  top: 150px;
+  top: 60px;
   left: 10px;
   background-color: black;
   display: flex;
@@ -19,14 +19,17 @@ export const SideBarHeader = styled.h4`
   font-size: larger;
   padding: 10px;
   margin: 0 auto;
+  cursor: default;
 `;
 
 export const RouteText = styled.p`
   color: white;
+  cursor: default;
+  padding: 5px;
 `;
 
 export const RoutesList = styled.ul`
-    padding: 10px;
+    padding: 5px;
 `;
 
 export const SingleRoute = styled.div`

@@ -1,4 +1,4 @@
-import { LatLng } from "leaflet";
+import * as L from "leaflet";
 import React, {
   useState,
   Dispatch,
@@ -11,21 +11,17 @@ import { EditControl } from "react-leaflet-draw";
 import { useLeafletContext } from "@react-leaflet/core";
 
 interface PathDrawerProps {
-  addNewFlightPlan: Dispatch<SetStateAction<LatLng[][]>>;
+  addNewFlightPlan: Dispatch<SetStateAction<L.LatLng[][]>>;
 }
 
 export const PathDrawer = ({ addNewFlightPlan }: PathDrawerProps) => {
-  const [storedRoutes, setStoredRoutes] = useState<Array<LatLng[]>>([]);
-  const [actualRoute, setActualRoute] = useState<LatLng[] | undefined>(
+  const [storedRoutes, setStoredRoutes] = useState<Array<L.LatLng[]>>([]);
+  const [actualRoute, setActualRoute] = useState<L.LatLng[] | undefined>(
     undefined
   );
   const { map } = useLeafletContext();
   const drawRef = useRef();
-
-  const onEditPath = () => {
-    return null;
-  };
-
+  
   const onCreate = (e: any) => {
     drawRef.current = e.layer;
     const newRoute = e.layer.editing.latlngs;
@@ -35,10 +31,6 @@ export const PathDrawer = ({ addNewFlightPlan }: PathDrawerProps) => {
     if (drawRef.current) {
       map.removeLayer(drawRef.current);
     }
-  };
-
-  const onDelete = () => {
-    return null;
   };
 
   useEffect(() => {
@@ -55,9 +47,9 @@ export const PathDrawer = ({ addNewFlightPlan }: PathDrawerProps) => {
     <FeatureGroup>
       <EditControl
         position="topright"
-        onEdited={onEditPath}
+        onEdited={undefined}
         onCreated={onCreate}
-        onDeleted={onDelete}
+        onDeleted={undefined}
         draw={{
           rectangle: false,
           circle: false,
