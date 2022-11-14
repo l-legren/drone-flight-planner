@@ -7,9 +7,9 @@ export const SideBarContainer = styled.div`
   background-color: black;
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 200px;
   min-height: 100px;
-  max-height: 250px;
+  max-height: 400px;
   z-index: 10000;
   border-radius: 5px;
 `;
@@ -17,7 +17,7 @@ export const SideBarContainer = styled.div`
 export const SideBarHeader = styled.h4`
   color: white;
   font-size: larger;
-  padding: 10px;
+  padding: 20px;
   margin: 0 auto;
   cursor: default;
 `;
@@ -25,7 +25,8 @@ export const SideBarHeader = styled.h4`
 export const RouteText = styled.p`
   color: white;
   cursor: default;
-  padding: 5px;
+  padding: 10px;
+  text-align: center;
 `;
 
 export const RoutesList = styled.ul`
@@ -34,6 +35,12 @@ export const RoutesList = styled.ul`
 
 export const SingleRoute = styled.div`
   cursor: pointer;
-  color: white;
   padding: 5px;
+`;
+
+export const SingleRouteContainer = styled.div`
+  display: flex;
+  align-items: start;
+  color: white;
+  justify-content: space-around;
 `;

@@ -6,6 +6,9 @@ const HeaderWrapper = styled.div`
     background-color: black;
     color: white;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const HeaderText = styled.h2``
@@ -13,7 +16,7 @@ const HeaderText = styled.h2``
 export const Header = () => {
   return (
     <HeaderWrapper>
-        <HeaderText>Welcome to Drone Flight Planner</HeaderText>
+        <HeaderText>Drone Flight Planner</HeaderText>
     </HeaderWrapper>
   )
 }

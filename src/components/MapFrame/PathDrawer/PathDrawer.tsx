@@ -34,7 +34,7 @@ export const PathDrawer = ({ addNewFlightPlan }: PathDrawerProps) => {
   };
 
   useEffect(() => {
-    if (actualRoute) {
+    if (actualRoute && storedRoutes.length < 10) {
       setStoredRoutes([...storedRoutes, actualRoute]);
     }
   }, [actualRoute]);

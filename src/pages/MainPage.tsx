@@ -1,8 +1,8 @@
 import { LatLng } from 'leaflet'
 import React, { useState} from 'react'
 import { MapFrame } from '../components/MapFrame/MapFrame'
-import { SideBar } from '../components/SideBar/SideBar'
 import { PageLayout } from '../containers/PageLayout'
+import { SideBar } from '../components/SideBar/SideBar'
 
 export const MainPage = () => {
   const [ flightPlans, setFlightPlans ] = useState<LatLng[][]>([])

@@ -1,6 +1,6 @@
 import { LatLng } from "leaflet";
 import React from "react";
-import * as S from './SideBar.styles'
+import * as S from "./SideBar.styles";
 
 interface SideBarProps {
   flightPlans: LatLng[][];
@@ -11,17 +11,18 @@ export const SideBar = ({ flightPlans, selectPlan }: SideBarProps) => {
 
   return (
     <S.SideBarContainer>
-      <S.SideBarHeader>Choose your route</S.SideBarHeader>
+      <S.SideBarHeader>Choose plan</S.SideBarHeader>
       {flightPlans.length > 0 ? (
         <S.RoutesList>
           {flightPlans.map((route, idx) => (
-            <S.SingleRoute onClick={() => selectPlan(route)} key={idx*2}>{`Route ${idx + 1}`}</S.SingleRoute>
+              <S.SingleRoute key={idx * 2} onClick={() => selectPlan(route)}>{`PLAN ${
+                idx + 1
+              }`}</S.SingleRoute>
           ))}
         </S.RoutesList>
       ) : (
         <S.RouteText>No routes available</S.RouteText>
       )}
-      <div>SideBar</div>
     </S.SideBarContainer>
   );
 };

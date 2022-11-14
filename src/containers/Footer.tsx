@@ -4,6 +4,9 @@ import styled from "styled-components";
 const FooterWrapper = styled.div`
   height: 55px;
   background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FooterText = styled.h4`
@@ -13,7 +16,7 @@ const FooterText = styled.h4`
 export const Footer = () => {
   return (
     <FooterWrapper>
-      <FooterText>This is my footer</FooterText>
+      <FooterText>Carlos Leret. November 2022 ©️</FooterText>
     </FooterWrapper>
   );
 };
