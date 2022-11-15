@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Drone Flight Planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What's this?
 
-## Available Scripts
+This project is a drone flight planner made for the browser.
 
-In the project directory, you can run:
+The project is built with React with ```create-react-app``` for Typescript.
 
-### `npm start`
+I used React Hooks and functional components instead of class components. Hooks enhances the readability and reusability of code as well as simplifies lifecycles methods of the virtual DOM. Leaflet library is used to render maps on the app. Leaflet draw was also used to draw polylines on the map.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Passing props between components in this case is also pretty cheap, consisting only on one level of depth. There is no need of using any state management tool like Redux or React Context. The props are passed directly from Parent Component to Child Component.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In order to make React components more readable and better structured I decided to implement styled components. Every component has its own folder inside src/components and styles files are separated from the file of the functional commponent. At the same type styled'components enables the use of a theme provider that makes the code also more readable and keeps the different colors and breakpoints for example just under one file. 
 
-### `npm test`
+## Technologies and libraries I used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- HTML5, CSS3
+- Typescript
+- leaflet
+- leaflet-draw
+- react.js
+- styled-components
 
-### `npm run build`
+## Set Up
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To make it run just clone the repository, install all the dependencies with ```npm install```. You just need to run the server and the client in you local directory with the command ```npm start```.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Screen 1
 
-### `npm run eject`
+![Screen 1](https://github.com/l-legren/drone-flight-planner/blob/master/public/images/screenshot1.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Screen 2
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Screen 2](https://github.com/l-legren/drone-flight-planer/blob/master/public/images/screenshot2.jpg)
