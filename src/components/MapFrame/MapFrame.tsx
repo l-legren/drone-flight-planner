@@ -1,15 +1,24 @@
-import React, { useState, SetStateAction, Dispatch } from "react";
-import { MapContainer, TileLayer, Marker, Popup, ZoomControl, Polyline } from "react-leaflet";
+import React, { useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  ZoomControl,
+  Polyline,
+} from "react-leaflet";
 import { PathDrawer } from "./PathDrawer/PathDrawer";
-import * as L from 'leaflet'
+import * as L from "leaflet";
+import { SideBar } from "../SideBar/SideBar";
+import * as S from './MapFrame.styles'
 
-interface MapFrameProps {
-    addNewFlightPlan: Dispatch<SetStateAction<L.LatLng[][]>>
-    selectedPlan: L.LatLng[] | undefined
-}
-
-export const MapFrame = ({addNewFlightPlan, selectedPlan}: MapFrameProps) => {
+export const MapFrame = () => {
   const [initialPoint] = useState<L.LatLngExpression>([52.51028, 13.40789]);
+  const [flightPlans, setFlightPlans] = useState<L.LatLng[][]>([]);
+  const [selectedPlan, setSelectedPlan] = useState<L.LatLng[] | undefined>(
+    undefined
+  );
+  const [isBarVisible, setIsBarVisible ] = useState<boolean>(true);
 
   return (
     <>
@@ -28,10 +37,21 @@ export const MapFrame = ({addNewFlightPlan, selectedPlan}: MapFrameProps) => {
             Welcome to our Berlin office <br /> Enjoy the views.
           </Popup>
         </Marker>
-        <PathDrawer addNewFlightPlan={addNewFlightPlan} />
-        <ZoomControl position={'bottomleft'} />
+        <PathDrawer addNewFlightPlan={setFlightPlans} />
+        <ZoomControl position={"bottomleft"} />
         {selectedPlan && <Polyline positions={selectedPlan} />}
       </MapContainer>
+      <S.ButtonContainer>
+        <S.ShowHideButton onClick={() => setIsBarVisible(!isBarVisible)}>
+          {isBarVisible ? "Hide Plans" : "Show Plans"}
+        </S.ShowHideButton>
+        <S.RestartButton onClick={() => window.location.reload()}>
+          Reset
+        </S.RestartButton>
+      </S.ButtonContainer>
+      {isBarVisible && (
+        <SideBar flightPlans={flightPlans} selectPlan={setSelectedPlan} />
+      )}
     </>
   );
 };

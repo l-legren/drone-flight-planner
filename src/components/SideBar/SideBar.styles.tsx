@@ -35,7 +35,8 @@ export const RoutesList = styled.ul`
 
 export const SingleRoute = styled.div`
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 20px;
+  color: white;
 `;
 
 export const SingleRouteContainer = styled.div`

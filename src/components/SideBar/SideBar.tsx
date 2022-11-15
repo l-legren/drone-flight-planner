@@ -1,5 +1,5 @@
 import { LatLng } from "leaflet";
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./SideBar.styles";
 
 interface SideBarProps {
@@ -8,6 +8,10 @@ interface SideBarProps {
 }
 
 export const SideBar = ({ flightPlans, selectPlan }: SideBarProps) => {
+
+  useEffect(() => {
+    console.log(flightPlans)
+  }, [flightPlans])
 
   return (
     <S.SideBarContainer>

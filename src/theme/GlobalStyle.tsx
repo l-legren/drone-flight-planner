@@ -14,4 +14,8 @@ export const GlobalStyle = createGlobalStyle`
   .leaflet-draw.leaflet-control > .leaflet-draw-section ~ .leaflet-draw-section {
     display: none;
  }
+
+ .leaflet-top.leaflet-left {
+    display: none;
+ }
 `;
