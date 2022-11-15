@@ -29,8 +29,8 @@ To make it run just clone the repository, install all the dependencies with ```n
 
 ### Screen 1
 
-![Screen 1](https://github.com/l-legren/drone-flight-planner/blob/master/public/images/screenshot1.jpg)
+![Screen 1](https://github.com/l-legren/drone-flight-planner/blob/master/public/screenshot1.jpg)
 
 ### Screen 2
 
-![Screen 2](https://github.com/l-legren/drone-flight-planer/blob/master/public/images/screenshot2.jpg)
+![Screen 2](https://github.com/l-legren/drone-flight-planner/blob/master/public/screenshot1.jpg)
